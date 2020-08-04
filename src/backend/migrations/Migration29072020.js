@@ -1,12 +1,13 @@
-import {Migration} from "mikro-orm";
+// import {Migration} from "mikro-orm"
+const { Migration} = require('mikro-orm')
 
-export class Migration29072020 extends Migration {
+class Migration29072020 extends Migration {
 
-    async up(): Promise<void> {
+    async up() {
         this.addSql(
             `CREATE TABLE dictionary(
             id INTEGER NOT NULL PRIMARY KEY,
-            key VARCHAR (255) NOT NULL, 
+            key VARCHAR (255) NOT NULL,
             value VARCHAR(255) NOT NULL)`
         );
         this.addSql(
@@ -14,8 +15,10 @@ export class Migration29072020 extends Migration {
         )
     }
 
-    async down(): Promise<void> {
+    async down() {
         this.addSql(`DROP TABLE dictionary`)
     }
 
 }
+
+exports.Migration29072020 = Migration29072020;
